@@ -24,7 +24,7 @@ let output = '';
   )));
   console.log(results);
   console.log(results.toString());
-  fs.writeFile('./output.txt', results.map(r => r.data.text).join('\n'), (err) => {
+  fs.writeFile('./output.txt', results.map(r => r.data.text).join('‍').replace(/:/g, ", "), (err) => {
     if (err) throw err;
     console.log('Success!');
   });
