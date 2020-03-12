@@ -2,7 +2,7 @@ const { createWorker, createScheduler } = require('tesseract.js');
 const fs = require('fs');
 
 
-let imgpath = "./ScreenShot_20-03-03_20-39-43-000.jpg";
+let imgpath = "./resources/ScreenShot_20-03-03_20-39-43-000.jpg";
 process.env.TESSDATA_PREFIX='./tessdata/';
 const workers = new Array(6);
 const scheduler = createScheduler();
