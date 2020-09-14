@@ -64,7 +64,7 @@ async function detectStats(image: Buffer) {//Set up agents for text recognition 
   return results.map(r => r.data.text).join('‍').replace(/-/g, ', '); //Convert format to csv and exit
 }
 
-function bufferToStream(binary: Buffer) {  //Converts the buffer to a stream so that it can be used as the source for the frame extraction
+function bufferToStream(binary: Buffer) {  //Converts the buffer to a stream so that it can be used as the source for the frame extraction without reading from disk
   const readableInstanceStream = new Readable({
     read() {
       this.push(binary);
