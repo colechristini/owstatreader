@@ -3,6 +3,7 @@ const fs = require("fs");
 const app = express();
 const https = require('https');
 const bodyParser = require('body-parser');
+const prompt = require('password-prompt')
 const statreader = require('./statread.js');
 const winston = require('winston');
 const port = process.env.PORT || 8080; //default to port 8080, but uses https, doesn't work on 443let drivers = [];
@@ -17,9 +18,9 @@ const logger = winston.createLogger({
 
 (async function () {
     https.createServer({ //Initialize server
-        key: fs.readFileSync('ssh/key.pem'),
-        cert: fs.readFileSync('ssh/cert.pem'),
-        passphrase: 'perow59~'
+        key: fs.readFileSync('ssl/key.pem'),
+        cert: fs.readFileSync('ssl/cert.pem'),
+        passphrase: await prompt('password: ')
     }, app)
         .listen(port);//load certificate and create secure server
     app.use(bodyParser.json());//setup parser
